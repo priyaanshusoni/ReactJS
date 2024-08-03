@@ -4,13 +4,20 @@ function Counter(){
 
     let [count,setCount] = useState(0)
 
-    const increment = ()=>{
-        setCount(count++);
+    function increment (){
+
+        //takes the PENDING state to calculate NEXT state .
+        // react puts your updater function in a queue (waiting in line)
+        //During the next render , it will call them in same order 
+        setCount(c=>c+1);
+        setCount(c=>c+1);
+        setCount(c=>c+1);
+       
     }
-    const decrement = ()=>{
-        setCount(count--);
+    function decrement (){
+        setCount(c=>c-1);
     }
-    const reset = ()=>{
+    function reset (){
         setCount(0);
     }
 
@@ -24,6 +31,12 @@ function Counter(){
        
        </div>
     )
-}
-
+    }
 export default Counter;
+// // /* In React, an updater function is a function that is used to update the state of a component based
+// on the previous state. When you call the `useState` hook in a functional component, it returns an
+// array with two elements: the current state value and a function that allows you to update that
+// state. */
+
+//A function passed as an argument to setState() usually ex:- setYear(arrow functions)
+//Allow for safe updates based on the previous state Used with multiple state updates and asynchronous functions good practice to use upates functions
